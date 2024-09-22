@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKZ Maxident Fan Site</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(90deg, #FF69B4, #FF1493);
+            color: #FFFFFF;
+            padding: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .button {
+            background-color: #FF0000;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            font-family: 'Verdana', sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #FF69B4;
+            transform: scale(1.1);
+        }
+
+        .album-info {
+            padding: 20px;
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .song-buttons {
+            margin-top: 20px;
+        }
+
+        .album-cover {
+            width: 300px;
+            height: auto;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .side-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .side-image {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .side-text {
+            max-width: 100px;
+            text-align: left;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        footer {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        function opensite(url) {
+            window.location.href = url;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        Welcome to the SKZ Maxident Fan Site
+    </header>
+    <main>
+        <div class="album-info">
+            <h2>Maxident Album Info</h2>
+            <div class="side-content">
+                <div class="side-text">
+                    <p>Stray Kids' unique style and powerful performances.</p>
+                </div>
+                <img src="Bang Chan.jpeg" alt="Side Image 1" class="side-image">
+                <img src="Artwork.jpg" alt="Maxident Album Cover" class="album-cover">
+                <img src="Felix Lee.jpeg" alt="Side Image 2" class="side-image">
+                <div class="side-text">
+                    <p>Exploring themes of romance and experimental sound.</p>
+                </div>
+            </div>
+            <p>Maxident is the seventh mini-album by Stray Kids, featuring the hit title track "CASE 143".</p>
+            <audio controls autoplay loop>
+                <source src="1. CASE 143.flac" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="song-buttons">
+                <button class="button" onclick="opensite('case_143.html')">CASE 143</button>
+                <button class="button" onclick="opensite('chill.html')">CHILL</button>
+                <button class="button" onclick="opensite('give_me_your_tmi.html')">Give Me Your TMI</button>
+                <button class="button" onclick="opensite('super_board.html')">SUPER BOARD</button>
+                <button class="button" onclick="opensite('3racha.html')">3RACHA</button>
+                <button class="button" onclick="opensite('taste.html')">TASTE</button>
+                <button class="button" onclick="opensite('cant_stop.html')">Can't Stop</button>
+                <button class="button" onclick="opensite('circus.html')">CIRCUS (Korean Ver.)</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

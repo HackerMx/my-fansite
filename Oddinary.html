@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jSKZ Universe</title>
+    <link rel="icon" href="_ce717e4d-6ca3-440b-80cd-a30b0020e50a.jpeg" type="image/png">
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #000000;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        header {
+            background-color: #000000;
+            color: #39FF14;
+            padding: 20px;
+        }
+
+        .button {
+            background-color: #FF0000;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #39FF14;
+        }
+
+        .album-info {
+            padding: 20px;
+        }
+
+        .song-buttons {
+            margin-top: 20px;
+        }
+
+        .album-cover {
+            width: 300px;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        function opensite(url) {
+            window.location.href = url;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>SKZ Oddinary </h1>
+    </header>
+    <main>
+        <div class="album-info">
+            <h2>Oddinary Album Info</h2>
+            <img src="oddinary.jpg" alt="Oddinary Album Cover" class="album-cover">
+            <p>Oddinary is the seventh mini-album by Stray Kids, featuring the hit title track "Maniac". The album
+                showcases the group's unique style and powerful performances.</p>
+            <audio controls autoplay loop>
+                <source src="2. MANIAC.flac" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="song-buttons">
+                <button class="button" onclick="opensite('maniacsong.html')">Maniac</button>
+                <button class="button" onclick="opensite('venom.html')">Venom</button>
+                <button class="button" onclick="opensite('charmer.html')">Charmer</button>
+                <button class="button" onclick="opensite('freeze.html')">Freeze</button>
+                <button class="button" onclick="opensite('lonely_st.html')">Lonely St.</button>
+                <button class="button" onclick="opensite('waiting_for_us.html')">Waiting For Us</button>
+                <button class="button" onclick="opensite('muddy_water.html')">Muddy Water</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 SKZ Fan Site</p>
+    </footer>
+</body>
+
+</html>
