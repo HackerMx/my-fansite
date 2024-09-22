@@ -26,7 +26,7 @@
 
         .image-section {
             flex: 1;
-            background: url('your-image-url.jpg') no-repeat center center;
+            background: url('sk2.jpeg') no-repeat center center;
             background-size: cover;
         }
 
@@ -106,7 +106,6 @@
 <body>
     <div class="container">
         <div class="image-section">
-            <img src="sk2.jpeg" alt="sk" width="100" height="200">
         </div>
         <div class="form-section">
             <h2>Join Stray Kids Fan Club</h2>
@@ -218,7 +217,7 @@
             const formData = new FormData(this);
             const userData = {
                 username: formData.get('login-username'),
-                email: formData.get('email'),
+                password: formData.get('login-password'),
                 country: 'Sri Lanka' // Assuming country is fixed for login
             };
             localStorage.setItem('userData', JSON.stringify(userData));
