@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stray Kids Fansite</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #000000, #434343);
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+
+        section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery-container img {
+            margin: 1rem;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        footer .social-icons {
+            margin: 1rem 0;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #ff0000;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .animated-text {
+            font-size: 2rem;
+            animation: colorChange 5s infinite;
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #ff0000;
+            }
+
+            25% {
+                color: #ff7f00;
+            }
+
+            50% {
+                color: #ffff00;
+            }
+
+            75% {
+                color: #00ff00;
+            }
+
+            100% {
+                color: #0000ff;
+            }
+        }
+
+        .join-button {
+            background-color: #ff0000;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .join-button:hover {
+            background-color: #cc0000;
+            transform: scale(1.1);
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://cdn.wallpapersafari.com/23/80/yH0gAt.jpg') no-repeat center center/cover;
+            animation: backgroundMove 20s infinite linear;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f1f1f;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff0000;
+            border-radius: 10px;
+            border: 3px solid #1f1f1f;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc0000;
+        }
+
+
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="background-animation"></div>
+    <header>
+        <h1>Welcome to the Stray Kids Fansite</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2 class="animated-text">Home</h2>
+        <p>Welcome to the ultimate Stray Kids fansite! Dive into the colorful world of SKZ.</p>
+        <button class="join-button" onclick="location.href='join.html'">Join Us</button>
+    </section>
+    <section id="about">
+        <h2>About</h2>
+        <p>Stray Kids (SKZ) is a South Korean boy group formed by JYP Entertainment through the 2017
+            reality show of the
+            same name. The group consists of eight members: Bang Chan, Lee Know, Changbin, Hyunjin, Han, Felix,
+            Seungmin, and I.N.</p>
+        <p>They debuted on March 25, 2018, with their extended play (EP) "I Am NOT". Known for their powerful
+            performances, self-produced music, and meaningful lyrics, Stray Kids have quickly risen to fame both in
+            South Korea and internationally.</p>
+        <p>Some of their popular songs include "God's Menu", "Back Door", "Thunderous", and "MANIAC". Stray Kids are
+            also known for their unique concepts and strong connection with their fans, known as Stays.</p>
+    </section>
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <!-- Add your images here -->
+            <img src="sk1.jpeg" alt="Stray Kids Image 1" onclick="openLightbox(this)">
+            <img src="sk2.jpeg" alt="Stray Kids Image 2" onclick="openLightbox(this)">
+            <img src="sk5.jpeg" alt="Stray Kids Image 3" onclick="openLightbox(this)">
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Get in touch with us! We'd love to hear your thoughts and feedback.</p>
+    </section>
+    <footer>
+        <div class="social-icons">
+            <a href="https://twitter.com/Stray_Kids" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/realstraykids/" target="_blank">Instagram</a>
+            <a href="https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA" target="_blank">YouTube</a>
+        </div>
+        <p>© 2024 Stray Kids Fansite. All rights reserved.</p>
+        <p>Designed with ❤️ by a Stay</p>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Stray Kids Image">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(element) {
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightbox-img').src = element.src;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+    <script>
+        function sendWelcomeMessage(username) {
+            alert(`Welcome to the Stray Kids Fansite, ${username}! We're glad to have you here.`);
+        }
+    </script>
+    <!-- Call this function when a new user joins -->
+    <script>
+        sendWelcomeMessage('NewUser');
+    </script>
+
+
+</body>
+
+</html>

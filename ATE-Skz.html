@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stray Kids - ATE Album</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .album-info {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .album-info img {
+            width: 200px;
+            height: auto;
+        }
+
+        .song-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .song-list button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .song-list button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <audio autoplay loop hidden>
+        <source src="Stray Kids - I Like It.mp3" type="audio/mpeg">
+    </audio>
+    <header>
+        <h1>Stray Kids - ATE Album</h1>
+    </header>
+    <main>
+        <section class="album-info">
+            <img src="Stray-Kid.JPG" alt="ATE Album Cover">
+            <p>Welcome to the fan site for Stray Kids' ATE album! Click on a song to learn more about it.</p>
+        </section>
+        <section class="song-list">
+            <button onclick="openSongPage('mountains.html')">Mountains</button>
+            <button onclick="openSongPage('chk chk boom eng.html')">Chk Chk Boom</button>
+            <button onclick="openSongPage('text.html')">JJAM</button>
+            <button onclick="openSongPage('I Like it.html')">I Like It</button>
+            <button onclick="openSongPage('Runners.html')">Runners</button>
+            <button onclick="openSongPage('Twilight.html')">Twilight</button>
+            <button onclick="openSongPage('stray kids song.html')">Stray Kids</button>
+            <button onclick="openSongPage('chkchkboomfestivalver.html')">Chk Chk Boom (Festival Ver.)</button>
+        </section>
+        <h3>[Now playing : I Like It By Stray Kids]</h3>
+    </main>
+    <script>
+        function openSongPage(page) {
+            window.open(page, '_blank');
+        }
+    </script>
+
+</body>
+
+</html>
