@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join SKZ Fansite</title>
-    <link rel="icon" href="_ce717e4d-6ca3-440b-80cd-a30b0020e50a.jpeg" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Join Us</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -106,38 +103,67 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="image-section">
-            <img src="sk2.jpeg" alt="skz" height="640" width="440">
+            <img src="sk2.jpeg" alt="sk">
         </div>
         <div class="form-section">
-            <h2>Join the SKZ Fansite</h2>
-            <form id="joinForm">
+            <h2>Join Stray Kids Fan Club</h2>
+            
+            <!-- Registration Form -->
+            <form id="register-form">
+                <h2>Register</h2>
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-
+                
                 <div class="form-group">
                     <label for="country">Country:</label>
-                    <input type="text" id="country" name="country" required>
+                    <input type="text" id="country" name="country" value="Sri Lanka" readonly>
                 </div>
+                
                 <div class="form-group">
-                    <label for="image">Profile Image:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <label for="profile-pic">Profile Picture:</label>
+                    <input type="file" id="profile-pic" name="profile-pic" accept="image/*" required>
                 </div>
+                
                 <div class="form-group">
-                    <button type="button" onclick="saveUserInfo()">Join</button>
+                    <label for="description">Description (optional, max 100 characters):</label>
+                    <textarea id="description" name="description" maxlength="100"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+            
+            <!-- Login Form -->
+            <form id="login-form">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="login-username">Username:</label>
+                    <input type="text" id="login-username" name="login-username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="login-password" required>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit">Login</button>
                 </div>
             </form>
         </div>
@@ -145,47 +171,71 @@
 
     <footer>
         <div class="social-icons">
-            <a href="https://facebook.com/hyunjinieeee123" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/your-profile" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/hyunjinieeee123" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/your-profile" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
         </div>
-
         <div class="links">
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy.html">Privacy Policy</a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
         </div>
         <div class="description">
-            © 2024 SKZ Fansite. All rights reserved.
+            © 2024 Stray Kids Fan Club. All rights reserved.
         </div>
     </footer>
 
     <script>
-        function saveUserInfo() {
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const country = document.getElementById('country').value;
-            const imageFile = document.getElementById('image').files[0];
-
-            if (country.toLowerCase() !== 'sri lanka') {
-                alert('Only users from Sri Lanka can join.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                localStorage.setItem('username', username);
-                localStorage.setItem('email', email);
-                localStorage.setItem('country', country);
-                localStorage.setItem('image', event.target.result);
-
-                alert('User information saved!');
-                window.location.href = 'arranging.html';
+        // Handle registration form submission with AJAX
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const userData = {
+                username: formData.get('username'),
+                email: formData.get('email'),
+                country: formData.get('country'),
+                description: formData.get('description')
             };
-            reader.readAsDataURL(imageFile);
-        }
+            localStorage.setItem('userData', JSON.stringify(userData));
+            fetch('/register', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'arranged.html';
+                } else {
+                    alert('Registration failed: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Handle login form submission with AJAX
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const userData = {
+                username: formData.get('login-username'),
+                email: formData.get('email'),
+                country: 'Sri Lanka' // Assuming country is fixed for login
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            fetch('/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'arranged.html';
+                } else {
+                    alert('Login failed: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>
-
 </html>
