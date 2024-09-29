@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+    <style>
+        #chatbox {
+            width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #chatOutput {
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        #userInput {
+            width: calc(100% - 60px);
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox">
+        <div id="chatOutput"></div>
+        <input type="text" id="userInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            const response = await fetch('/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            });
+            const data = await response.json();
+            document.getElementById('chatOutput').innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            document.getElementById('chatOutput').innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+            document.getElementById('userInput').value = '';
+        }
+    </script>
+</body>
+</html>
