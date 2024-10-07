@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Join Us</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,10 +21,45 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
-            text-align: center;
         }
         h2 {
+            text-align: center;
             color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            background: #ff7e5f;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #feb47b;
+        }
+        .message {
+            text-align: center;
+            margin-top: 1rem;
+            color: #333;
+        }
+        .profile-pic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1rem;
         }
         .profile-pic img {
             width: 100px;
@@ -33,41 +68,65 @@
             object-fit: cover;
             margin-bottom: 1rem;
         }
-        .info {
-            margin-bottom: 1rem;
-        }
-        .info p {
-            margin: 0.5rem 0;
-            color: #555;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>User Profile</h2>
-        <div class="profile-pic">
-            <img id="profileImage" src="https://via.placeholder.com/100" alt="Profile Picture">
-        </div>
-        <div class="info">
-            <p><strong>Username:</strong> <span id="username"></span></p>
-            <p><strong>Email:</strong> <span id="email"></span></p>
-            <p><strong>Description:</strong></p>
-            <p id="description"></p>
-        </div>
+        <h2>Join Us</h2>
+        <form id="joinForm">
+            <div class="profile-pic">
+                <img id="profileImage" src="https://via.placeholder.com/100" alt="Profile Picture">
+                <input type="file" id="profilePic" accept="image/*" onchange="loadFile(event)">
+            </div>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <textarea id="description" placeholder="Tell us about yourself" rows="4" required></textarea>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="message" id="message"></div>
     </div>
     <script>
-        // Assuming you have the user data stored in localStorage or received from the server
-        const userData = {
-            username: 'JohnDoe',
-            email: 'john@example.com',
-            description: 'I am a huge fan of Stray Kids and love creating web applications!',
-            profilePic: 'https://via.placeholder.com/100' // Replace with actual image URL
+        const loadFile = (event) => {
+            const image = document.getElementById('profileImage');
+            image.src = URL.createObjectURL(event.target.files[0]);
         };
 
-        document.getElementById('username').textContent = userData.username;
-        document.getElementById('email').textContent = userData.email;
-        document.getElementById('description').textContent = userData.description;
-        document.getElementById('profileImage').src = userData.profilePic;
+        document.getElementById('joinForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const description = document.getElementById('description').value;
+            const profilePic = document.getElementById('profilePic').files[0];
+
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('email', email);
+            formData.append('password', password);
+            formData.append('description', description);
+            formData.append('profilePic', profilePic);
+
+            try {
+                const response = await fetch('/api/users/register', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.text();
+                document.getElementById('message').textContent = data;
+
+                // Store user data in localStorage
+                const userData = {
+                    username,
+                    email,
+                    description,
+                    profilePic: URL.createObjectURL(profilePic)
+                };
+                localStorage.setItem('userData', JSON.stringify(userData));
+            } catch (error) {
+                document.getElementById('message').textContent = 'An error occurred. Please try again.';
+            }
+        });
     </script>
 </body>
 </html>
